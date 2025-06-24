@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platform - Assessments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Learning Platform</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="/"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="/students"><i class="fas fa-user-graduate"></i> Students</a></li>
+                <li><a href="/instructors"><i class="fas fa-chalkboard-teacher"></i> Instructors</a></li>
+                <li><a href="/courses"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="/enrollments"><i class="fas fa-user-plus"></i> Enrollments</a></li>
+                <li class="active"><a href="/assessments"><i class="fas fa-tasks"></i> Assessments</a></li>
+                <li><a href="/logs"><i class="fas fa-history"></i> Logs</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <header class="content-header">
+                <h1>Assessments</h1>
+                <div class="user-info">
+                    <span>Admin User</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+            
+            <div class="action-bar">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search assessments...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="add-btn" id="add-assessment-btn"><i class="fas fa-plus"></i> Add Assessment</button>
+            </div>
+            
+            <div class="data-table-container">
+                <table class="data-table" id="assessments-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Course</th>
+                            <th>Title</th>
+                            <th>Due Date</th>
+                            <th>Max Score</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal for adding/editing assessments -->
+    <div class="modal" id="assessment-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Add Assessment</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="assessment-form">
+                    <input type="hidden" id="assessment-id" name="assessment_id">
+                    <div class="form-group">
+                        <label for="assessment-course">Course</label>
+                        <select id="assessment-course" name="course_id" required>
+                            <option value="">Select Course</option>
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="assessment-title">Title</label>
+                        <input type="text" id="assessment-title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="assessment-description">Description</label>
+                        <textarea id="assessment-description" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="assessment-due-date">Due Date</label>
+                        <input type="date" id="assessment-due-date" name="due_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="assessment-max-score">Maximum Score</label>
+                        <input type="number" id="assessment-max-score" name="max_score" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Save</button>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/assessments.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platform - Courses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Learning Platform</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="/"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="/students"><i class="fas fa-user-graduate"></i> Students</a></li>
+                <li><a href="/instructors"><i class="fas fa-chalkboard-teacher"></i> Instructors</a></li>
+                <li class="active"><a href="/courses"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="/enrollments"><i class="fas fa-user-plus"></i> Enrollments</a></li>
+                <li><a href="/assessments"><i class="fas fa-tasks"></i> Assessments</a></li>
+                <li><a href="/logs"><i class="fas fa-history"></i> Logs</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <header class="content-header">
+                <h1>Courses</h1>
+                <div class="user-info">
+                    <span>Admin User</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+            
+            <div class="action-bar">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search courses...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="add-btn" id="add-course-btn"><i class="fas fa-plus"></i> Add Course</button>
+            </div>
+            
+            <div class="data-table-container">
+                <table class="data-table" id="courses-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Course Name</th>
+                            <th>Instructor</th>
+                            <th>Category</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal for adding/editing courses -->
+    <div class="modal" id="course-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Add Course</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="course-form">
+                    <input type="hidden" id="course-id" name="course_id">
+                    <div class="form-group">
+                        <label for="course-name">Course Name</label>
+                        <input type="text" id="course-name" name="course_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-description">Description</label>
+                        <textarea id="course-description" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-instructor">Instructor</label>
+                        <select id="course-instructor" name="instructor_id">
+                            <option value="">Select Instructor</option>
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-category">Category</label>
+                        <input type="text" id="course-category" name="category">
+                    </div>
+                    <div class="form-group">
+                        <label for="course-start-date">Start Date</label>
+                        <input type="date" id="course-start-date" name="start_date">
+                    </div>
+                    <div class="form-group">
+                        <label for="course-end-date">End Date</label>
+                        <input type="date" id="course-end-date" name="end_date">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Save</button>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/courses.js') }}"></script>
+</body>
+</html>

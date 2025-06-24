@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platform - Logs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>Learning Platform</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="/students"><i class="fas fa-user-graduate"></i> Students</a></li>
+            <li><a href="/instructors"><i class="fas fa-chalkboard-teacher"></i> Instructors</a></li>
+            <li><a href="/courses"><i class="fas fa-book"></i> Courses</a></li>
+            <li><a href="/enrollments"><i class="fas fa-user-plus"></i> Enrollments</a></li>
+            <li><a href="/assessments"><i class="fas fa-tasks"></i> Assessments</a></li>
+            <li class="active"><a href="/logs"><i class="fas fa-history"></i> Logs</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <header class="content-header">
+            <h1>Deleted Records Logs</h1>
+        </header>
+
+        {% for title, records in logs.items() %}
+        <div class="data-table-container">
+            <h2>{{ title }}</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        {% for col in records[0].keys() %}
+                            <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in records %}
+                        <tr>
+                            {% for val in row.values() %}
+                                <td>{{ val }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+    </main>
+</div>
+</body>
+</html>

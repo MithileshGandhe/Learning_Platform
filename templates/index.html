@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platform - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Learning Platform</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="/"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="/students"><i class="fas fa-user-graduate"></i> Students</a></li>
+                <li><a href="/instructors"><i class="fas fa-chalkboard-teacher"></i> Instructors</a></li>
+                <li><a href="/courses"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="/enrollments"><i class="fas fa-user-plus"></i> Enrollments</a></li>
+                <li><a href="/assessments"><i class="fas fa-tasks"></i> Assessments</a></li>
+                <li><a href="/logs"><i class="fas fa-history"></i> Logs</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <header class="content-header">
+                <h1>Dashboard</h1>
+                <div class="user-info">
+                    <span>Admin User</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+            
+            <div class="dashboard">
+                <div class="stats-container">
+                    <div class="stat-card" id="student-count">
+                        <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+                        <div class="stat-info">
+                            <h3>Students</h3>
+                            <p class="stat-number">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" id="instructor-count">
+                        <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <div class="stat-info">
+                            <h3>Instructors</h3>
+                            <p class="stat-number">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" id="course-count">
+                        <div class="stat-icon"><i class="fas fa-book"></i></div>
+                        <div class="stat-info">
+                            <h3>Courses</h3>
+                            <p class="stat-number">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" id="enrollment-count">
+                        <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+                        <div class="stat-info">
+                            <h3>Enrollments</h3>
+                            <p class="stat-number">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" id="assessment-count">
+                        <div class="stat-icon"><i class="fas fa-tasks"></i></div>
+                        <div class="stat-info">
+                            <h3>Assessments</h3>
+                            <p class="stat-number">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-widgets">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h3>Recent Enrollments</h3>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="recent-enrollments-list" id="recent-enrollments">
+                                <!-- Will be populated by JavaScript -->
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h3>Upcoming Assessments</h3>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="upcoming-assessments-list" id="upcoming-assessments">
+                                <!-- Will be populated by JavaScript -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

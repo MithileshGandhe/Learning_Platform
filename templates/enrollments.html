@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platform - Enrollments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Learning Platform</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="/"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="/students"><i class="fas fa-user-graduate"></i> Students</a></li>
+                <li><a href="/instructors"><i class="fas fa-chalkboard-teacher"></i> Instructors</a></li>
+                <li><a href="/courses"><i class="fas fa-book"></i> Courses</a></li>
+                <li class="active"><a href="/enrollments"><i class="fas fa-user-plus"></i> Enrollments</a></li>
+                <li><a href="/assessments"><i class="fas fa-tasks"></i> Assessments</a></li>
+                <li><a href="/logs"><i class="fas fa-history"></i> Logs</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <header class="content-header">
+                <h1>Enrollments</h1>
+                <div class="user-info">
+                    <span>Admin User</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+            
+            <div class="action-bar">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search enrollments...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="add-btn" id="add-enrollment-btn"><i class="fas fa-plus"></i> Add Enrollment</button>
+            </div>
+            
+            <div class="data-table-container">
+                <table class="data-table" id="enrollments-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Student</th>
+                            <th>Course</th>
+                            <th>Enrollment Date</th>
+                            <th>Status</th>
+                            <th>Grade</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal for adding/editing enrollments -->
+    <div class="modal" id="enrollment-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Add Enrollment</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="enrollment-form">
+                    <div class="form-group">
+                        <label for="enrollment-id">Enrollment ID</label>
+                        <input type="number" id="enrollment-id" name="enrollment_id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="enrollment-student">Student</label>
+                        <select id="enrollment-student" name="student_id" required>
+                            <option value="">Select Student</option>
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="enrollment-course">Course</label>
+                        <select id="enrollment-course" name="course_id" required>
+                            <option value="">Select Course</option>
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="enrollment-date">Enrollment Date</label>
+                        <input type="date" id="enrollment-date" name="enrollment_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="enrollment-status">Status</label>
+                        <select id="enrollment-status" name="status" required>
+                            <option value="Active">Active</option>
+                            <option value="Dropped">Dropped</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Waitlisted">Waitlisted</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="enrollment-grade">Grade</label>
+                        <select id="enrollment-grade" name="grade">
+                            <option value="">No Grade</option>
+                            <option value="A">A</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B">B</option>
+                            <option value="B-">B-</option>
+                            <option value="C+">C+</option>
+                            <option value="C">C</option>
+                            <option value="C-">C-</option>
+                            <option value="D+">D+</option>
+                            <option value="D">D</option>
+                            <option value="F">F</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Save</button>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/enrollments.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platform - Instructors</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Learning Platform</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="/"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="/students"><i class="fas fa-user-graduate"></i> Students</a></li>
+                <li class="active"><a href="/instructors"><i class="fas fa-chalkboard-teacher"></i> Instructors</a></li>
+                <li><a href="/courses"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="/enrollments"><i class="fas fa-user-plus"></i> Enrollments</a></li>
+                <li><a href="/assessments"><i class="fas fa-tasks"></i> Assessments</a></li>
+                <li><a href="/logs"><i class="fas fa-history"></i> Logs</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <header class="content-header">
+                <h1>Instructors</h1>
+                <div class="user-info">
+                    <span>Admin User</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+            
+            <div class="action-bar">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search instructors...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="add-btn" id="add-instructor-btn"><i class="fas fa-plus"></i> Add Instructor</button>
+            </div>
+            
+            <div class="data-table-container">
+                <table class="data-table" id="instructors-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Specialization</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal for adding/editing instructors -->
+    <div class="modal" id="instructor-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Add Instructor</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="instructor-form">
+                    <input type="hidden" id="instructor-id" name="instructor_id">
+                    <div class="form-group">
+                        <label for="instructor-first-name">First Name</label>
+                        <input type="text" id="instructor-first-name" name="first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="instructor-last-name">Last Name</label>
+                        <input type="text" id="instructor-last-name" name="last_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="instructor-email">Email</label>
+                        <input type="email" id="instructor-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="instructor-specialization">Specialization</label>
+                        <input type="text" id="instructor-specialization" name="specialization" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="instructor-bio">Bio</label>
+                        <textarea id="instructor-bio" name="bio" rows="4"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Save</button>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/instructors.js') }}"></script>
+</body>
+</html>

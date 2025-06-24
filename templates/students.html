@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platform - Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Learning Platform</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="/"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li class="active"><a href="/students"><i class="fas fa-user-graduate"></i> Students</a></li>
+                <li><a href="/instructors"><i class="fas fa-chalkboard-teacher"></i> Instructors</a></li>
+                <li><a href="/courses"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="/enrollments"><i class="fas fa-user-plus"></i> Enrollments</a></li>
+                <li><a href="/assessments"><i class="fas fa-tasks"></i> Assessments</a></li>
+                <li><a href="/logs"><i class="fas fa-history"></i> Logs</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <header class="content-header">
+                <h1>Students</h1>
+                <div class="user-info">
+                    <span>Admin User</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+            
+            <div class="action-bar">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search students...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="add-btn" id="add-student-btn"><i class="fas fa-plus"></i> Add Student</button>
+            </div>
+            
+            <div class="data-table-container">
+                <table class="data-table" id="students-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Date of Birth</th>
+                            <th>Enrollment Date</th>
+                            <th>Major</th>
+                            <th>GPA</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal for adding/editing students -->
+    <div class="modal" id="student-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Add Student</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="student-form">
+                    <div class="form-group">
+                        <label for="student-id">Student ID</label>
+                        <input type="number" id="student-id" name="student_id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="student-name">Name</label>
+                        <input type="text" id="student-name" name="student_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="student-email">Email</label>
+                        <input type="email" id="student-email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="student-dob">Date of Birth</label>
+                        <input type="date" id="student-dob" name="date_of_birth">
+                    </div>
+                    <div class="form-group">
+                        <label for="student-enrollment-date">Enrollment Date</label>
+                        <input type="date" id="student-enrollment-date" name="enrollment_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="student-major">Major</label>
+                        <input type="text" id="student-major" name="major">
+                    </div>
+                    <div class="form-group">
+                        <label for="student-gpa">GPA</label>
+                        <input type="number" id="student-gpa" name="gpa" step="0.01" min="0" max="10.0">
+                    </div>
+                    <div class="form-group">
+                        <label for="student-mentor">Mentor ID</label>
+                        <select id="student-mentor" name="mentor_id">
+                            <option value="">None</option>
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Save</button>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/students.js') }}"></script>
+</body>
+</html>
